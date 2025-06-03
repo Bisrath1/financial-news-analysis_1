@@ -16,3 +16,8 @@ This repository contains code and analysis for the 10 Academy Week 1 Challenge.
 
 ## Progress
 - Task 1: Set up Git, environment, and EDA (branch: task-1).
+
+## Task 3 References
+- TextBlob: https://textblob.readthedocs.io/en/dev/
+- SciPy Pearson Correlation: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html
+- Pandas: https://pandas.pydata.org/docs/
