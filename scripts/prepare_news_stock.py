@@ -28,9 +28,17 @@ except FileNotFoundError:
 news_df.rename(columns={'date': 'Date', 'stock': 'Stock'}, inplace=True)
 stock_df.rename(columns={'stock': 'Stock'}, inplace=True)
 
-# Convert Date columns to datetime (handle UTC-4 as per challenge)
-news_df['Date'] = pd.to_datetime(news_df['Date'], utc=True).dt.tz_convert('UTC-04:00').dt.date
-stock_df['Date'] = pd.to_datetime(stock_df['Date']).dt.date
+# Convert Date columns to datetime (handle mixed formats)
+news_df['Date'] = pd.to_datetime(news_df['Date'], format='mixed', errors='coerce', utc=True)
+stock_df['Date'] = pd.to_datetime(stock_df['Date'], format='mixed', errors='coerce')
+
+# Convert to date (remove time and timezone)
+news_df['Date'] = news_df['Date'].dt.date
+stock_df['Date'] = stock_df['Date'].dt.date
+
+# Drop rows with invalid dates
+news_df = news_df.dropna(subset=['Date'])
+stock_df = stock_df.dropna(subset=['Date'])
 
 # Merge on Date and Stock
 merged_df = pd.merge(news_df, stock_df, on=['Date', 'Stock'], how='inner')
@@ -43,6 +51,11 @@ merged_df['Daily_Return'] = merged_df.groupby('Stock')['Close'].pct_change() * 1
 
 # Ensure all required columns are present
 required_cols = ['Date', 'Stock', 'headline', 'Sentiment', 'Daily_Return', 'Open', 'High', 'Low', 'Close']
+missing_cols = [col for col in required_cols if col not in merged_df.columns]
+if missing_cols:
+    print(f"Error: Missing columns in merged data: {missing_cols}")
+    exit(1)
+
 merged_df = merged_df[required_cols]
 
 # Save to processed folder
