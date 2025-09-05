@@ -7,3 +7,4 @@ textblob
 pynance
 ta-lib
 scipy
+pytest
