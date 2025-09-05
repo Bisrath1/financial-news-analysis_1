@@ -67,7 +67,7 @@ def plot_stock_indicators(stock_symbol='AAPL'):
         yaxis_title="Price (USD)", height=800, showlegend=True, template="plotly_dark"
     )
     fig.write_html(f"notebooks/plots/{stock_symbol}_indicators.html")
-    fig.write_png(f"notebooks/plots/{stock_symbol}_indicators.png")
+    fig.write_image(f"notebooks/plots/{stock_symbol}_indicators.png")
     print(f"Generated plot for {stock_symbol}")
 
 # Visualization 2: Sentiment vs. Stock Returns
@@ -79,7 +79,7 @@ def plot_sentiment_vs_returns():
     )
     fig.update_layout(template="plotly_dark")
     fig.write_html("notebooks/plots/sentiment_vs_returns.html")
-    fig.write_png("notebooks/plots/sentiment_vs_returns.png")
+    fig.write_image(f"notebooks/plots/sentiment_vs_returns.png")
     print("Generated sentiment vs. returns plot")
 
 # Visualization 3: Correlation Heatmap
@@ -96,7 +96,7 @@ def plot_correlation_heatmap():
     )
     fig.update_layout(template="plotly_dark")
     fig.write_html("notebooks/plots/correlation_heatmap.html")
-    fig.write_png("notebooks/plots/correlation_heatmap.png")
+    fig.write_image(f"notebooks/plots/correlation_heatmap.png")
     print("Generated correlation heatmap")
 
 # Visualization 4: Publication Trends
@@ -109,7 +109,7 @@ def plot_publication_trends():
     )
     fig.update_layout(template="plotly_dark")
     fig.write_html("notebooks/plots/publication_trends.html")
-    fig.write_png("notebooks/plots/publication_trends.png")
+    fig.write_image(f"notebooks/plots/publication_trends.png")
     print("Generated publication trends plot")
 
 # Run visualizations

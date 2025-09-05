@@ -8,3 +8,6 @@ pynance
 ta-lib
 scipy
 pytest
+TA-Lib
+textblob
+kaleido
