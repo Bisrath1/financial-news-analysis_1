@@ -71,6 +71,16 @@ Unit tests are automatically run on every push/pull request using GitHub Actions
 - Use PNG images for presentations or LinkedIn posts.
 - Explore `Data/processed/` CSVs for further analysis.
 
+## Contributing
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature-branch`).
+3. Commit changes (`git commit -m "Add feature"`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
+
+## Contact
+Maintained by [Bisrath1](https://github.com/Bisrath1). For issues or questions, open a GitHub issue or contact the owner directly.
+
 ## License
 This project is licensed under the MIT License.
 
