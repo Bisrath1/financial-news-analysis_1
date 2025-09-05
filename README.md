@@ -78,14 +78,11 @@ financial-news-analysis_1/
 ## CI/CD Pipeline
 Unit tests are automatically run on every push/pull request using GitHub Actions (see `.github/workflows/unittests.yml`). Tests validate data loading and indicator calculations.
 
-<<<<<<< HEAD
-=======
 ## Usage
 - View interactive visualizations in `notebooks/plots/*.html`.
 - Use PNG images for presentations or LinkedIn posts.
 - Explore `Data/processed/` CSVs for further analysis.
 
->>>>>>> c0e1f98dc6b02637e492a4209a66b96d63f262e0
 ## Progress
 - **Task 1**: Initialized Git repository, set up Python environment, and conducted EDA (branch: `task-1`).
 - **Task 2**: Implemented technical indicator calculations (SMA, RSI, MACD) using TA-Lib.
@@ -106,8 +103,4 @@ Maintained by [Bisrath1](https://github.com/Bisrath1). For issues or questions, 
 
 ---
 
-<<<<<<< HEAD
 *Built as part of the 10 Academy Week 1 Challenge to demonstrate data analysis, visualization, and CI/CD skills.*
-=======
-*Built as part of the 10 Academy Week 1 Challenge to demonstrate data analysis, visualization, and CI/CD skills.*
->>>>>>> c0e1f98dc6b02637e492a4209a66b96d63f262e0
