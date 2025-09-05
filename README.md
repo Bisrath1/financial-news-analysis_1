@@ -1,23 +1,79 @@
 # Financial News Analysis
 
-This repository contains code and analysis for the 10 Academy Week 1 Challenge.
+This project analyzes the relationship between financial news sentiment and stock price movements for major tech companies (AAPL, AMZN, GOOG, META, MSFT, NVDA, TSLA). It fulfills the requirements of the 10 Academy Week 1 Challenge, covering exploratory data analysis (EDA), technical indicator calculations, sentiment analysis, and correlation analysis, with interactive visualizations and a robust CI/CD pipeline.
 
-## Setup
-1. Clone the repo: `git clone https://github.com/<your-username>/financial-news-analysis_1.git`
-2. Create virtual environment: `python3 -m venv venv`
-3. Activate: `source venv/bin/activate`
-4. Install dependencies: `pip install -r requirements.txt`
+## Project Overview
+- **Objective**: Investigate how news sentiment correlates with stock returns using historical stock prices and news headlines.
+- **Data**:
+  - Stock prices from Yahoo Finance (`Data/raw/*.csv`).
+  - News headlines from `raw_analyst_ratings.csv`.
+- **Tasks**:
+  - **Task 1 (EDA)**: Analyzed stock price trends and news publication frequency.
+  - **Task 2 (Quantitative Analysis)**: Computed technical indicators (SMA, RSI, MACD) using TA-Lib.
+  - **Task 3 (Correlation Analysis)**: Calculated news sentiment using TextBlob and correlated it with daily stock returns.
+- **Visualizations**:
+  - Candlestick chart with SMA, RSI, MACD for AAPL.
+  - Sentiment vs. daily returns scatter plot.
+  - Correlation heatmap between sentiment and returns.
+  - News publication frequency over time.
+- **CI/CD**: Automated unit tests via GitHub Actions to ensure code quality.
 
-## Structure
-- **notebooks/**: Jupyter notebooks for EDA.
-- **src/**: Python scripts for reusable code.
-- **tests/**: Unit tests.
-- **scripts/**: Utility scripts.
+## Visualizations
+Interactive plots and static images are available in `notebooks/plots/`:
+- [AAPL Stock Analysis](notebooks/plots/AAPL_indicators.html) ([PNG](notebooks/plots/AAPL_indicators.png))
+- [Sentiment vs. Returns](notebooks/plots/sentiment_vs_returns.html) ([PNG](notebooks/plots/sentiment_vs_returns.png))
+- [Correlation Heatmap](notebooks/plots/correlation_heatmap.html) ([PNG](notebooks/plots/correlation_heatmap.png))
+- [Publication Trends](notebooks/plots/publication_trends.html) ([PNG](notebooks/plots/publication_trends.png))
 
-## Progress
-- Task 1: Set up Git, environment, and EDA (branch: task-1).
+## Setup Instructions
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Bisrath1/financial-news-analysis_1.git
+   cd financial-news-analysis_1
+   ```
+2. **Create and Activate Virtual Environment**:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   ```
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Install TA-Lib** (Windows):
+   - Download `ta_lib-0.6.3-cp311-cp311-win_amd64.whl` from [TA-Lib releases](https://github.com/TA-Lib/ta-lib-python/releases).
+   - Install: `pip install ta_lib-0.6.3-cp311-cp311-win_amd64.whl`.
+5. **Run Scripts**:
+   - Prepare data: `python scripts/prepare_news_stock.py`
+   - Compute indicators: `python scripts/compute_indicators.py`
+   - Generate visualizations: `python scripts/visualizations.py`
+   - Run tests: `pytest tests/`
 
-## Task 3 References
-- TextBlob: https://textblob.readthedocs.io/en/dev/
-- SciPy Pearson Correlation: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html
-- Pandas: https://pandas.pydata.org/docs/
+## Repository Structure
+```
+financial-news-analysis_1/
+├── Data/
+│   ├── raw/                     # Raw stock and news data
+│   ├── processed/               # Processed CSVs (news_stock_merged.csv, stock_indicators.csv)
+├── notebooks/plots/             # Visualizations (HTML and PNG)
+├── scripts/                     # Data processing and visualization scripts
+├── tests/                       # Unit tests for data loading and indicators
+├── .github/workflows/           # CI/CD pipeline (unittests.yml)
+├── requirements.txt             # Dependencies
+├── README.md                    # Project documentation
+```
+
+## CI/CD Pipeline
+Unit tests are automatically run on every push/pull request using GitHub Actions (see `.github/workflows/unittests.yml`). Tests validate data loading and indicator calculations.
+
+## Usage
+- View interactive visualizations in `notebooks/plots/*.html`.
+- Use PNG images for presentations or LinkedIn posts.
+- Explore `Data/processed/` CSVs for further analysis.
+
+## License
+This project is licensed under the MIT License.
+
+---
+
+*Built as part of the 10 Academy Week 1 Challenge to demonstrate data analysis, visualization, and CI/CD skills.*
