@@ -12,12 +12,12 @@ try:
     news_stock_df = pd.read_csv("Data/processed/news_stock_merged.csv")
     indicators_df = pd.read_csv("Data/processed/stock_indicators.csv")
 except FileNotFoundError as e:
-    print(f"Error: {e}. Ensure 'Data/processed/news_stock_merged.csv' and 'Data/processed/stock_indicators.csv' exist.")
+    print(f"Error: {e}. Ensure CSVs exist in Data/processed/.")
     exit(1)
 
 # Check required columns
-required_news_cols = ['Date', 'stock', 'Open', 'High', 'Low', 'Close', 'sentiment', 'daily_return', 'headline']
-required_indicators_cols = ['Date', 'stock', 'SMA_20', 'RSI', 'MACD', 'Signal']
+required_news_cols = ['Date', 'Stock', 'Open', 'High', 'Low', 'Close', 'Sentiment', 'Daily_Return', 'headline']
+required_indicators_cols = ['Date', 'Stock', 'SMA_20', 'RSI', 'MACD', 'Signal']
 missing_news_cols = [col for col in required_news_cols if col not in news_stock_df.columns]
 missing_indicators_cols = [col for col in required_indicators_cols if col not in indicators_df.columns]
 
@@ -32,8 +32,8 @@ indicators_df['Date'] = pd.to_datetime(indicators_df['Date'])
 
 # Visualization 1: Candlestick Chart with SMA, RSI, MACD
 def plot_stock_indicators(stock_symbol='AAPL'):
-    stock_data = news_stock_df[news_stock_df['stock'] == stock_symbol]
-    indicator_data = indicators_df[indicators_df['stock'] == stock_symbol]
+    stock_data = news_stock_df[news_stock_df['Stock'] == stock_symbol]
+    indicator_data = indicators_df[indicators_df['Stock'] == stock_symbol]
     
     if stock_data.empty or indicator_data.empty:
         print(f"No data for {stock_symbol}. Skipping plot.")
@@ -70,10 +70,10 @@ def plot_stock_indicators(stock_symbol='AAPL'):
     fig.write_png(f"notebooks/plots/{stock_symbol}_indicators.png")
     print(f"Generated plot for {stock_symbol}")
 
-# Visualization 2: Sentiment vs. Stock Returns Scatter
+# Visualization 2: Sentiment vs. Stock Returns
 def plot_sentiment_vs_returns():
     fig = px.scatter(
-        news_stock_df, x='sentiment', y='daily_return', color='stock',
+        news_stock_df, x='Sentiment', y='Daily_Return', color='Stock',
         hover_data=['Date', 'headline'], size_max=10,
         title="News Sentiment vs. Daily Stock Returns"
     )
@@ -85,7 +85,7 @@ def plot_sentiment_vs_returns():
 # Visualization 3: Correlation Heatmap
 def plot_correlation_heatmap():
     pivot_df = news_stock_df.pivot_table(
-        values=['sentiment', 'daily_return'], index='Date', columns='stock'
+        values=['Sentiment', 'Daily_Return'], index='Date', columns='Stock'
     )
     correlation_matrix = pivot_df.corr()
     
@@ -113,7 +113,7 @@ def plot_publication_trends():
     print("Generated publication trends plot")
 
 # Run visualizations
-plot_stock_indicators('AAPL')  # Add more stocks if needed (e.g., 'MSFT', 'GOOG')
+plot_stock_indicators('AAPL')
 plot_sentiment_vs_returns()
 plot_correlation_heatmap()
 plot_publication_trends()
