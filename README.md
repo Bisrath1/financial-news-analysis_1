@@ -1,7 +1,4 @@
 
-<<<<<<< HEAD
-This project analyzes the relationship between financial news sentiment and stock price movements for major tech companies (AAPL, AMZN, GOOG, META, MSFT, NVDA, TSLA). It fulfills the requirements of the 10 Academy Week 1 Challenge, covering exploratory data analysis (EDA), technical indicator calculations, sentiment analysis, and correlation analysis, with interactive visualizations and a robust CI/CD pipeline.
-
 ## Project Overview
 - **Objective**: Investigate how news sentiment correlates with stock returns using historical stock prices and news headlines.
 - **Data**:
@@ -198,4 +195,4 @@ Maintained by [Bisrath1](https://github.com/Bisrath1). For issues or questions, 
 ---
 
 
->>>>>>> f9bf461754889cb0a9bd3932d6ff4be10fe455f3
+
